@@ -25,6 +25,8 @@ _________
 
   [Key Findings](#key-findings)
 
+  [Visualization](#visualization)
+
   [Recommendation](#recommendation)
 
   [Conclusion](#conclusion)
@@ -214,6 +216,9 @@ In all three regions, the number of cancellations surpasses the number of active
 - Strengthen Support Services: Ensure that customer support is readily available and responsive. Providing multiple channels for support (e.g., chat, email, phone) can help address customer issues quickly, enhancing their overall experience.
 - Utilize Case Studies and Testimonials: Share success stories and testimonials from satisfied customers to build trust and encourage new subscribers. Highlighting positive experiences can help reinforce the value of the service and attract potential customers.
 - Focus on Continuous Improvement: Regularly review and update service offerings based on customer feedback and market trends. Staying responsive to changes in customer needs and preferences will help maintain high satisfaction levels and reduce the likelihood of cancellations.
+
+## Visualization
+![Screenshot (91)](https://github.com/user-attachments/assets/8b7b173f-f61f-4e2b-91a7-ef02315440ec)
 
 ### Conclusion
 The analysis of subscription data has provided valuable insights into customer behavior, preferences, and retention trends. Key findings indicate that the Basic subscription type is the most popular among customers, significantly outpacing Premium and Standard subscriptions. The absence of cancellations within the first twelve months reflects strong customer satisfaction and effective onboarding processes, suggesting that customers find value in their subscriptions during this critical period.
