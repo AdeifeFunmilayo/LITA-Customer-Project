@@ -175,7 +175,7 @@ GROUP BY SubscriptionType
 - Insights: The Basic subscription type generates the highest revenue by a substantial margin, indicating it may be the most popular option among customers. The Premium and Standard types generate significantly less revenue, suggesting either fewer customers or lower pricing.
 ______
 #### find the top 3 regions by subscription cancellations.
-``SQL
+```SQL
 SELECT Region, COUNT(*) AS CancellationCount
 FROM [dbo].[LITA Capstone Dataset CustomerData]
 WHERE Canceled = 1  
@@ -185,6 +185,7 @@ OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY
 ```
 ![Screenshot (73)](https://github.com/user-attachments/assets/daf462eb-0ef8-42a0-9db3-5e70b2897251)
 ![Screenshot (82)](https://github.com/user-attachments/assets/273ff754-253b-48e5-a662-f4694e329baf)
+
 _________
 #### find the total number of active and canceled subscriptions.
 ```SQL
