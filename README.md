@@ -110,37 +110,87 @@ ____
 ____________
 ## SQL
 #### retrieve the total number of customers from each region.
+```SQL
+SELECT Region, 
+COUNT(CustomerID) AS TotalCustomers
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+GROUP BY Region
+Order by TotalCustomers desc
+```
 ![Screenshot (66)](https://github.com/user-attachments/assets/f9b393e7-1a8a-4160-9578-14df45b4506d)
 ![Screenshot (90)](https://github.com/user-attachments/assets/2a5554e8-a9a9-47a4-b852-28f950f734f6)
 - Insight: The analysis of customer counts by region reveals a relatively balanced customer distribution, with opportunities for growth and improvement in customer retention strategies across all areas. Focusing on understanding regional differences and enhancing customer satisfaction can lead to increased loyalty and a stronger overall customer base.
 ________
 #### find the most popular subscription type by the number of customers.
+```SQL
+SELECT Top 1 SubscriptionType, 
+COUNT(CustomerID) AS CustomerCount
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+GROUP BY SubscriptionType
+ORDER BY CustomerCount DESC
+```
 ![Screenshot (68)](https://github.com/user-attachments/assets/bdc26c00-9b14-4903-87b2-2e5d0181e94b)
 ________
 #### find customers who canceled their subscription within 6 months.
+```SQL
+SELECT CustomerID, CustomerName, 
+DATEDIFF(Month, SubscriptionStart, SubscriptionEnd) AS DurationInMonth
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+WHERE Canceled = '1'
+  AND DATEDIFF(Month, SubscriptionStart, SubscriptionEnd) < 6
+```
 ![Screenshot (78)](https://github.com/user-attachments/assets/b267d29e-6ebe-4d5f-8e57-d1cf8d25b7a8)
 ![Screenshot (77)](https://github.com/user-attachments/assets/55454b66-cb93-4692-a2df-b375ec1c5052)
 - Observation: During the analysis period, there were no cancellations reported among customers within the first six months of their subscription.
 - Insight: This finding indicates a strong initial engagement and satisfaction level among new subscribers, suggesting that the onboarding process and early customer experience are effective. Customers who remain engaged during the first six months are likely to become loyal subscribers.
   _________
 #### calculate the average subscription duration for all customers.
+```SQL
+SELECT AVG(DATEDIFF(DAY, SubscriptionStart, SubscriptionEnd)) 
+AS AverageSubscriptionDuration
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+```
 ![Screenshot (70)](https://github.com/user-attachments/assets/e44eb9cf-69bd-405f-aebf-06fd616b8e42)
 ________
 #### find customers with subscriptions longer than 12 months.
+```SQL
+SELECT CustomerID, CustomerName
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+WHERE DATEDIFF(Month, SubscriptionStart, SubscriptionEnd) > 12
+```
 ![Screenshot (79)](https://github.com/user-attachments/assets/d0bd4c36-dd14-41a7-b1ab-778d8bda6ed4)
 -Observation: There were no reported cancellations among customers within the first twelve months of their subscription.
 -Insight: This finding reflects a strong customer satisfaction and loyalty level during the initial year of service. The absence of cancellations indicates that the product or service effectively meets customer needs and expectations during this critical retention period
 _________
 #### calculate total revenue by subscription type.
+```SQL
+SELECT SubscriptionType, SUM(Revenue) AS TotalRevenue
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+GROUP BY SubscriptionType
+```
 ![Screenshot (72)](https://github.com/user-attachments/assets/fe7bce55-f6c8-4d7c-81f2-dbd9c289030c)
 ![Screenshot (83)](https://github.com/user-attachments/assets/f96616e8-7bae-400a-ba41-abe1d6696f10)
 - Insights: The Basic subscription type generates the highest revenue by a substantial margin, indicating it may be the most popular option among customers. The Premium and Standard types generate significantly less revenue, suggesting either fewer customers or lower pricing.
 ______
 #### find the top 3 regions by subscription cancellations.
+``SQL
+SELECT Region, COUNT(*) AS CancellationCount
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+WHERE Canceled = 1  
+GROUP BY Region
+ORDER BY CancellationCount DESC
+OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY
+```
 ![Screenshot (73)](https://github.com/user-attachments/assets/daf462eb-0ef8-42a0-9db3-5e70b2897251)
 ![Screenshot (82)](https://github.com/user-attachments/assets/273ff754-253b-48e5-a662-f4694e329baf)
 _________
 #### find the total number of active and canceled subscriptions.
+```SQL
+SELECT 
+    SUM(CASE WHEN Canceled = 0 THEN 1 ELSE 0 END) AS ActiveSubscriptions,
+    SUM(CASE WHEN Canceled = 1 THEN 1 ELSE 0 END) AS CancelledSubscriptions
+FROM [dbo].[LITA Capstone Dataset CustomerData]
+```
 ![Screenshot (74)](https://github.com/user-attachments/assets/94290e2e-8cd7-4976-95f4-aeca30b251b7)
 ![Screenshot (81)](https://github.com/user-attachments/assets/3ee5de22-ded5-41cb-8c75-54f755fc4a98)
 - Insight: There are more active subscriptions than cancelled ones, indicating a positive customer retention trend. However, the cancellation rate is still significant, warranting investigation into customer dissatisfaction.
