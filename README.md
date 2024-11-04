@@ -25,9 +25,9 @@ _________
 
   [Key Findings](#key-findings)
 
-  [Conclusion](#conclusion)
-
   [Recommendation](#recommendation)
+
+  [Conclusion](#conclusion)
 ## Project Summary
 This repository provides a detailed analysis of customer subscription data to derive insights related to subscription duration, popularity, cancellations, revenue, and regional preferences. The analysis aims to support decision-making for enhancing customer retention and optimizing subscription offerings.
 ![Screenshot (85)](https://github.com/user-attachments/assets/9791ab84-30c6-417b-a086-fa43c3f7cba2)
